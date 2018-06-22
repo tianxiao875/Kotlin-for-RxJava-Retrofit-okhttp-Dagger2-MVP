@@ -1,0 +1,112 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+//apply plugin: 'kotlin-kapt'
+////
+//kapt {
+//    generateStubs = true
+//}
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "kingkazma.com.rxjavaretrofitokhttp3dagger2mvpdatabading"
+        minSdkVersion 17
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+    }
+    buildTypes {
+        beta {
+            matchingFallbacks = ['release', 'debug']
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+//    externalNativeBuild {
+//        cmake {
+//            path "CMakeLists.txt"
+//        }
+//    }
+
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    /**
+     * If you're using the Android Databinding library,
+     * you may want to increase the number of errors that javac will print.
+     * When Dagger prints an error, databinding compilation will halt and sometimes
+     * print more than 100 errors, which is the default amount for javac. For more information
+     */
+//    gradle.projectsEvaluated {
+//        tasks.withType(JavaCompile) {
+//            options.compilerArgs << "-Xmaxerrs" << "500"
+//        }
+//    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //https://github.com/square/retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    //https://github.com/ReactiveX/RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.14'
+    //https://github.com/ReactiveX/RxKotlin
+    implementation 'io.reactivex:rxkotlin:2.0.0-RC1'
+    //https://github.com/square/okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    // https://github.com/trello/RxLifecycle
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:2.2.1'
+    //https://github.com/square/retrofit/tree/master/retrofit-adapters/rxjava2
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    //https://github.com/square/okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    //https://github.com/ihsanbal/LoggingInterceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+    //https://github.com/google/gson
+    implementation 'com.google.code.gson:gson:2.8.4'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+    //https://github.com/google/dagger
+    //dagger2 android
+    implementation 'com.google.dagger:dagger-android:2.16'
+    implementation 'com.google.dagger:dagger-android-support:2.16'
+    //dagger2 if you use the support libraries
+    kapt 'com.google.dagger:dagger-android-processor:2.16'
+    kapt 'com.google.dagger:dagger-compiler:2.16'
+    //retrofit BaseUrl
+    //implementation 'me.jessyan:retrofit-url-manager:1.2.5'
+    //BasePopup
+    //implementation 'com.github.razerdp:BasePopup:1.9.4'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:support-v13:27.1.1'
+
+    //arch
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+    implementation 'android.arch.persistence.room:runtime:1.1.0'
+    implementation 'android.arch.lifecycle:common-java8:1.1.1'
+
+    // uber autodispose
+    implementation 'com.uber.autodispose:autodispose-android:0.7.0'
+    implementation 'com.uber.autodispose:autodispose-android-archcomponents:0.7.0'
+}
