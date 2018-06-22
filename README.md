@@ -1,6 +1,7 @@
 #Kotlin for RxJAVA+Retrofit+okhttp+Dagger2+Lifecycle+MVP 
 
-##Project structure
+##Project structure  
+
     ../app  
         /common  
         /receiver  
